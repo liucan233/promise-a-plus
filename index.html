@@ -218,8 +218,8 @@
     <li id="point-53"><a href="https://promisesaplus.com/#point-53" class="anchor"></a>否则，如果<code
         class="highlighter-rouge">x</code>是对象或者函数
       <ol>
-        <li id="point-54"><a href="https://promisesaplus.com/#point-54" class="anchor"></a>让promise的<code
-            class="highlighter-rouge">then</code>与<code class="highlighter-rouge">x.then</code>一致[<a
+        <li id="point-54"><a href="https://promisesaplus.com/#point-54" class="anchor"></a>尝试将<code
+            class="highlighter-rouge">x.then</code>储存至新变量<code class="highlighter-rouge">then</code>（then保持对x.then的引用）[<a
             href="#notes">3.5</a>]</li>
         <li id="point-55"><a href="https://promisesaplus.com/#point-55" class="anchor"></a>如果访问
           <code class="highlighter-rouge">x.then</code>时收到异常<code
@@ -232,15 +232,15 @@
           <ol>
             <li id="point-57"><a href="https://promisesaplus.com/#point-57" class="anchor"></a>如果<code
                 class="highlighter-rouge">resolvePromise</code>以<code
-                class="highlighter-rouge">y</code>作为第一个参数被调用，执行<code class="highlighter-rouge">[[Resolve]](promise, y)</code>。
+                class="highlighter-rouge">y</code>作为第一个参数被x回调，执行<code class="highlighter-rouge">[[Resolve]](promise, y)</code>。
             </li>
             <li id="point-58"><a href="https://promisesaplus.com/#point-58" class="anchor"></a>如果/当<code
                 class="highlighter-rouge">rejectPromise</code>以<code
-                class="highlighter-rouge">r</code>作为拒绝原因被调用，则用
+                class="highlighter-rouge">r</code>作为拒绝原因被x回调，则用
                 <code class="highlighter-rouge">r</code>拒绝<code class="highlighter-rouge">promise</code>。</li>
             <li id="point-59"><a href="https://promisesaplus.com/#point-59" class="anchor"></a>如果<code
                 class="highlighter-rouge">resolvePromise</code>和<code class="highlighter-rouge">rejectPromise</code>
-              豆瓣调用，或者对同一个参数进行多次调用，那么第一次调用优先，以后的调用都会被忽略。</li>
+              都被调用，或者同一被多次调用，那么第一次调用优先，以后的调用都会被忽略。</li>
             <li id="point-60"><a href="https://promisesaplus.com/#point-60" class="anchor"></a>如果调用中<code
                 class="highlighter-rouge">then</code>抛出了一个异常<code class="highlighter-rouge">e</code>,
               <ol>
@@ -304,8 +304,8 @@
         This clause allows the use of implementation-specific means to adopt the state of known-conformant promises.</p>
     </li>
     <li id="point-74"><a href="https://promisesaplus.com/#point-74" class="anchor"></a>
-      <p id="point-75"><a href="https://promisesaplus.com/#point-75" class="anchor"></a>应该首先储存
-        <code class="highlighter-rouge">x.then</code>提供的回调函数的引用，然后测试引用是否有效，再去回调对应回调函数，避免了多次访问 
+      <p id="point-75"><a href="https://promisesaplus.com/#point-75" class="anchor"></a>首先存储对
+        <code class="highlighter-rouge">x.then</code>这一引用，然后测试引用是否有效，然后调用该引用，避免了多次访问 
         <code class="highlighter-rouge">x.then</code>属性，这种预防措施对于确保访问器属性的一致性非常重要，
         因为访问器属性的值可能在两次访问中改变。</p>
     </li>
