@@ -226,17 +226,17 @@
             class="highlighter-rouge">e</code>，使用e拒绝<code class="highlighter-rouge">promise</code>。</li>
         <li id="point-56"><a href="https://promisesaplus.com/#point-56" class="anchor"></a>如果<code
             class="highlighter-rouge">then</code>是一个函数，将<code class="highlighter-rouge">x</code>
-          作为<code class="highlighter-rouge">this</code>调用它，且第一个参数为<code
+          作为<code class="highlighter-rouge">this</code>调用then方法，且第一个参数为<code
             class="highlighter-rouge">resolvePromise</code>，第二个参数为<code
             class="highlighter-rouge">rejectPromise</code>，这里：
           <ol>
             <li id="point-57"><a href="https://promisesaplus.com/#point-57" class="anchor"></a>如果<code
                 class="highlighter-rouge">resolvePromise</code>以<code
-                class="highlighter-rouge">y</code>作为第一个参数被x回调，执行<code class="highlighter-rouge">[[Resolve]](promise, y)</code>。
+                class="highlighter-rouge">y</code>作为第一个参数被回调，执行<code class="highlighter-rouge">[[Resolve]](promise, y)</code>。
             </li>
             <li id="point-58"><a href="https://promisesaplus.com/#point-58" class="anchor"></a>如果/当<code
                 class="highlighter-rouge">rejectPromise</code>以<code
-                class="highlighter-rouge">r</code>作为拒绝原因被x回调，则用
+                class="highlighter-rouge">r</code>作为拒绝原因被回调，则用
                 <code class="highlighter-rouge">r</code>拒绝<code class="highlighter-rouge">promise</code>。</li>
             <li id="point-59"><a href="https://promisesaplus.com/#point-59" class="anchor"></a>如果<code
                 class="highlighter-rouge">resolvePromise</code>和<code class="highlighter-rouge">rejectPromise</code>
